@@ -250,12 +250,11 @@ document.getElementById('start-turn-btn').addEventListener('click', async () => 
         } else {
             // Fallback if API fails
             hideElement('loading');
-            alert('Could not get topic from AI. Using fallback.');
             useFallbackTopic();
         }
     } catch (error) {
         hideElement('loading');
-        alert('Error connecting to AI. Using fallback topic.');
+        console.log('Using fallback topics (AI not connected)');
         useFallbackTopic();
     }
 });
@@ -280,22 +279,125 @@ async function getTopicFromAI() {
     return data; // Expecting: {category, emoji, topic}
 }
 
-// Fallback topics if AI fails
+// Fallback topics if AI fails - 100 proper charades topics
 function useFallbackTopic() {
     const fallbacks = [
+        // MOVIES (30)
         { category: 'Movie', emoji: '🎬', topic: 'Home Alone' },
-        { category: 'Song', emoji: '🎵', topic: 'Jingle Bells' },
-        { category: 'Activity', emoji: '🎄', topic: 'Building a Snowman' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Wizard of Oz' },
+        { category: 'Movie', emoji: '🎬', topic: 'Jaws' },
+        { category: 'Movie', emoji: '🎬', topic: 'Titanic' },
+        { category: 'Movie', emoji: '🎬', topic: 'Star Wars' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Lion King' },
+        { category: 'Movie', emoji: '🎬', topic: 'Frozen' },
+        { category: 'Movie', emoji: '🎬', topic: 'Jurassic Park' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Godfather' },
         { category: 'Movie', emoji: '🎬', topic: 'Elf' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Grinch' },
+        { category: 'Movie', emoji: '🎬', topic: 'Mary Poppins' },
+        { category: 'Movie', emoji: '🎬', topic: 'Finding Nemo' },
+        { category: 'Movie', emoji: '🎬', topic: 'Shrek' },
+        { category: 'Movie', emoji: '🎬', topic: 'Harry Potter' },
+        { category: 'Movie', emoji: '🎬', topic: 'Back to the Future' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Matrix' },
+        { category: 'Movie', emoji: '🎬', topic: 'Toy Story' },
+        { category: 'Movie', emoji: '🎬', topic: 'E.T.' },
+        { category: 'Movie', emoji: '🎬', topic: 'Ghostbusters' },
+        { category: 'Movie', emoji: '🎬', topic: 'Indiana Jones' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Sound of Music' },
+        { category: 'Movie', emoji: '🎬', topic: 'Forrest Gump' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Breakfast Club' },
+        { category: 'Movie', emoji: '🎬', topic: 'Die Hard' },
+        { category: 'Movie', emoji: '🎬', topic: 'Rocky' },
+        { category: 'Movie', emoji: '🎬', topic: 'Grease' },
+        { category: 'Movie', emoji: '🎬', topic: 'Dirty Dancing' },
+        { category: 'Movie', emoji: '🎬', topic: 'The Notebook' },
+        { category: 'Movie', emoji: '🎬', topic: 'Gladiator' },
+        
+        // TV SHOWS (20)
+        { category: 'TV Show', emoji: '📺', topic: 'Friends' },
+        { category: 'TV Show', emoji: '📺', topic: 'The Simpsons' },
+        { category: 'TV Show', emoji: '📺', topic: 'Game of Thrones' },
+        { category: 'TV Show', emoji: '📺', topic: 'Breaking Bad' },
+        { category: 'TV Show', emoji: '📺', topic: 'The Office' },
+        { category: 'TV Show', emoji: '📺', topic: 'Doctor Who' },
+        { category: 'TV Show', emoji: '📺', topic: 'Stranger Things' },
+        { category: 'TV Show', emoji: '📺', topic: 'The Crown' },
+        { category: 'TV Show', emoji: '📺', topic: 'Downton Abbey' },
+        { category: 'TV Show', emoji: '📺', topic: 'Sherlock' },
+        { category: 'TV Show', emoji: '📺', topic: 'Big Bang Theory' },
+        { category: 'TV Show', emoji: '📺', topic: 'Seinfeld' },
+        { category: 'TV Show', emoji: '📺', topic: 'The Sopranos' },
+        { category: 'TV Show', emoji: '📺', topic: 'Peaky Blinders' },
+        { category: 'TV Show', emoji: '📺', topic: 'Black Mirror' },
+        { category: 'TV Show', emoji: '📺', topic: 'The X Files' },
+        { category: 'TV Show', emoji: '📺', topic: 'Fawlty Towers' },
+        { category: 'TV Show', emoji: '📺', topic: 'Only Fools and Horses' },
+        { category: 'TV Show', emoji: '📺', topic: 'Strictly Come Dancing' },
+        { category: 'TV Show', emoji: '📺', topic: 'Great British Bake Off' },
+        
+        // SONGS (20)
+        { category: 'Song', emoji: '🎵', topic: 'Jingle Bells' },
+        { category: 'Song', emoji: '🎵', topic: 'Bohemian Rhapsody' },
+        { category: 'Song', emoji: '🎵', topic: 'Yesterday' },
+        { category: 'Song', emoji: '🎵', topic: 'Imagine' },
+        { category: 'Song', emoji: '🎵', topic: 'Like a Rolling Stone' },
+        { category: 'Song', emoji: '🎵', topic: 'Sweet Child O Mine' },
+        { category: 'Song', emoji: '🎵', topic: 'Billie Jean' },
+        { category: 'Song', emoji: '🎵', topic: 'Wonderwall' },
+        { category: 'Song', emoji: '🎵', topic: 'Hey Jude' },
+        { category: 'Song', emoji: '🎵', topic: 'Smells Like Teen Spirit' },
+        { category: 'Song', emoji: '🎵', topic: 'Hotel California' },
+        { category: 'Song', emoji: '🎵', topic: 'Stairway to Heaven' },
         { category: 'Song', emoji: '🎵', topic: 'All I Want for Christmas' },
+        { category: 'Song', emoji: '🎵', topic: 'Let It Be' },
+        { category: 'Song', emoji: '🎵', topic: 'Rocket Man' },
+        { category: 'Song', emoji: '🎵', topic: 'Dancing Queen' },
+        { category: 'Song', emoji: '🎵', topic: 'Born to Run' },
+        { category: 'Song', emoji: '🎵', topic: 'Purple Rain' },
+        { category: 'Song', emoji: '🎵', topic: 'Thriller' },
+        { category: 'Song', emoji: '🎵', topic: 'Fairytale of New York' },
+        
+        // BOOKS (15)
+        { category: 'Book', emoji: '📚', topic: 'Harry Potter' },
+        { category: 'Book', emoji: '📚', topic: 'The Hobbit' },
+        { category: 'Book', emoji: '📚', topic: 'Pride and Prejudice' },
+        { category: 'Book', emoji: '📚', topic: 'To Kill a Mockingbird' },
+        { category: 'Book', emoji: '📚', topic: 'The Great Gatsby' },
+        { category: 'Book', emoji: '📚', topic: 'The Catcher in the Rye' },
+        { category: 'Book', emoji: '📚', topic: 'Lord of the Rings' },
         { category: 'Book', emoji: '📚', topic: 'A Christmas Carol' },
-        { category: 'Character', emoji: '⭐', topic: 'Santa Claus' },
-        { category: 'Activity', emoji: '🎄', topic: 'Decorating the Tree' }
+        { category: 'Book', emoji: '📚', topic: 'Winnie the Pooh' },
+        { category: 'Book', emoji: '📚', topic: 'Alice in Wonderland' },
+        { category: 'Book', emoji: '📚', topic: 'The Da Vinci Code' },
+        { category: 'Book', emoji: '📚', topic: 'Gone Girl' },
+        { category: 'Book', emoji: '📚', topic: 'The Hunger Games' },
+        { category: 'Book', emoji: '📚', topic: 'Charlotte\'s Web' },
+        { category: 'Book', emoji: '📚', topic: 'Charlie and the Chocolate Factory' },
+        
+        // FAMOUS PEOPLE (15)
+        { category: 'Famous Person', emoji: '⭐', topic: 'Elvis Presley' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Marilyn Monroe' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'The Queen' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'David Beckham' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Beyoncé' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Michael Jackson' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Madonna' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Charlie Chaplin' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Winston Churchill' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'William Shakespeare' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Albert Einstein' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Barack Obama' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'James Bond' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Santa Claus' },
+        { category: 'Famous Person', emoji: '⭐', topic: 'Harry Styles' }
     ];
     
-    // Pick random fallback not already used
+    // Pick random topic not already used
     const available = fallbacks.filter(f => !gameState.usedTopics.includes(f.topic));
-    const topic = available[Math.floor(Math.random() * available.length)] || fallbacks[0];
+    const topic = available.length > 0 ? 
+        available[Math.floor(Math.random() * available.length)] : 
+        fallbacks[Math.floor(Math.random() * fallbacks.length)];
     
     gameState.currentTopic = topic.topic;
     gameState.currentCategory = topic.category;
@@ -303,6 +405,17 @@ function useFallbackTopic() {
     
     document.getElementById('category-badge').textContent = `${topic.emoji} ${topic.category}`;
     document.getElementById('topic-text').textContent = topic.topic;
+    
+    // Update skip button
+    const player = gameState.players[gameState.currentPlayerIndex];
+    const skipBtn = document.getElementById('skip-btn');
+    if (player.skipsLeft > 0) {
+        document.getElementById('skip-text').textContent = `Skip (${player.skipsLeft} left)`;
+        skipBtn.disabled = false;
+    } else {
+        document.getElementById('skip-text').textContent = 'No skips left';
+        skipBtn.disabled = true;
+    }
     
     showElement('topic-container');
     showElement('turn-actions-section');
