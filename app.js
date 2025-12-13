@@ -4,7 +4,7 @@
 
 const CONFIG = {
     // Replace this with YOUR n8n webhook URL
-    N8N_WEBHOOK_URL: 'YOUR_N8N_WEBHOOK_URL_HERE'
+    N8N_WEBHOOK_URL: 'https://dundeefounders.app.n8n.cloud/webhook/charades-topic'
     // Example: 'https://your-n8n-instance.app.n8n.cloud/webhook/charades-topic'
 };
 
