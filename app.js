@@ -511,10 +511,7 @@ document.getElementById('skip-btn').addEventListener('click', async () => {
 document.getElementById('success-btn').addEventListener('click', () => {
     stopTimer();
     
-    // Actor gets a point
-    gameState.players[gameState.currentPlayerIndex].score++;
-    showPointsNotification();
-    
+    // Only guesser gets point (not actor)
     // Show guesser selection
     hideElement('turn-actions-section');
     showGuesserSelection();
