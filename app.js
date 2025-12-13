@@ -16,6 +16,7 @@ let gameState = {
     // Game Settings
     timerLength: 60,        // seconds per turn
     totalRounds: 3,         // how many rounds to play
+    theme: '',              // optional theme for topics
     
     // Players
     players: [],            // {name, photo, score, skipsLeft}
@@ -155,6 +156,11 @@ document.getElementById('rounds-setting').addEventListener('change', (e) => {
     gameState.totalRounds = parseInt(e.target.value);
 });
 
+// Theme setting
+document.getElementById('theme-setting').addEventListener('input', (e) => {
+    gameState.theme = e.target.value.trim();
+});
+
 // Start game
 document.getElementById('start-game-btn').addEventListener('click', () => {
     // Shuffle player order
@@ -267,7 +273,8 @@ async function getTopicFromAI() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            usedTopics: gameState.usedTopics
+            usedTopics: gameState.usedTopics,
+            theme: gameState.theme
         })
     });
     
