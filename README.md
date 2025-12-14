@@ -184,7 +184,7 @@ Post your customized version in the group chat. Let's see what you create!
 
 Built at AI Builders Buildathon  
 Dundee Founders Collective  
-December 2024
+December 2025
 
 ---
 
