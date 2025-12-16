@@ -747,10 +747,9 @@ function showGameOver() {
         list.appendChild(item);
     });
 }
-
 // Play again
 document.getElementById('new-game-btn').addEventListener('click', () => {
-    // Reset scores
+    // Reset scores and game state
     gameState.players.forEach(p => {
         p.score = 0;
         p.skipsLeft = 1;
@@ -759,11 +758,8 @@ document.getElementById('new-game-btn').addEventListener('click', () => {
     gameState.currentPlayerIndex = 0;
     gameState.usedTopics = [];
     
-    // Shuffle players
-    gameState.players.sort(() => Math.random() - 0.5);
-    
-    // Back to game
-    showGameScreen();
+    // Go back to setup screen so users can change settings
+    showScreen('setup-screen');
 });
 
 // ============================================================================
