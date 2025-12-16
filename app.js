@@ -56,12 +56,26 @@ function hideElement(id) {
 // ============================================================================
 
 let tempPhoto = null; // Temporary storage for photo being added
+let webcamStream = null; // Store webcam stream for cleanup
 
-// Photo upload
+// Detect if device is mobile or desktop
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+           ('ontouchstart' in window);
+}
+
+// Photo upload - different behaviour for mobile vs desktop
 document.getElementById('photo-preview').addEventListener('click', () => {
-    document.getElementById('photo-input').click();
+    if (isMobileDevice()) {
+        // Mobile: use file input with camera
+        document.getElementById('photo-input').click();
+    } else {
+        // Desktop: open webcam modal
+        openWebcam();
+    }
 });
 
+// Mobile file input handler
 document.getElementById('photo-input').addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -73,6 +87,74 @@ document.getElementById('photo-input').addEventListener('change', (e) => {
         };
         reader.readAsDataURL(file);
     }
+});
+
+// Webcam functions for desktop
+async function openWebcam() {
+    const modal = document.getElementById('webcam-modal');
+    const video = document.getElementById('webcam-video');
+    
+    try {
+        // Request webcam access
+        webcamStream = await navigator.mediaDevices.getUserMedia({ 
+            video: { 
+                width: { ideal: 640 },
+                height: { ideal: 480 },
+                facingMode: 'user'
+            },
+            audio: false 
+        });
+        
+        video.srcObject = webcamStream;
+        showElement('webcam-modal');
+        
+    } catch (error) {
+        console.error('Error accessing webcam:', error);
+        alert('Could not access webcam. Please check your camera permissions.');
+    }
+}
+
+function closeWebcam() {
+    const modal = document.getElementById('webcam-modal');
+    const video = document.getElementById('webcam-video');
+    
+    // Stop all video tracks
+    if (webcamStream) {
+        webcamStream.getTracks().forEach(track => track.stop());
+        webcamStream = null;
+    }
+    
+    video.srcObject = null;
+    hideElement('webcam-modal');
+}
+
+// Capture photo from webcam
+document.getElementById('capture-photo-btn').addEventListener('click', () => {
+    const video = document.getElementById('webcam-video');
+    const canvas = document.getElementById('webcam-canvas');
+    const context = canvas.getContext('2d');
+    
+    // Set canvas size to match video
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    
+    // Draw current video frame to canvas
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Convert to base64
+    tempPhoto = canvas.toDataURL('image/jpeg', 0.8);
+    
+    // Update preview
+    const preview = document.getElementById('photo-preview');
+    preview.innerHTML = `<img src="${tempPhoto}" alt="Preview">`;
+    
+    // Close webcam
+    closeWebcam();
+});
+
+// Cancel webcam
+document.getElementById('cancel-webcam-btn').addEventListener('click', () => {
+    closeWebcam();
 });
 
 // Add player
