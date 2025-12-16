@@ -164,6 +164,19 @@
             <div class="spinner"></div>
             <p>Getting topic from AI...</p>
         </div>
+
+        <!-- Webcam Modal (for desktop) -->
+        <div id="webcam-modal" class="webcam-modal hidden">
+            <div class="webcam-container">
+                <h3>Take Photo</h3>
+                <video id="webcam-video" autoplay playsinline></video>
+                <canvas id="webcam-canvas" style="display: none;"></canvas>
+                <div class="webcam-buttons">
+                    <button id="capture-photo-btn" class="btn btn-primary">📸 Capture</button>
+                    <button id="cancel-webcam-btn" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>
