@@ -2,6 +2,33 @@
 
 A single-phone charades game you can play at the pub. Pass it around, act things out, have a laugh.
 
+## Running Locally
+
+### Option 1: Python HTTP Server (Simple)
+
+1. Clone the repository
+2. Navigate to the project directory
+3. Start a local server:
+   ```bash
+   python3 -m http.server 8000
+   ```
+4. Open your browser to `http://localhost:8000`
+
+### Option 2: npm with Hot Reloading (Recommended for Development)
+
+1. Clone the repository
+2. Install a simple development server:
+   ```bash
+   npm install -g live-server
+   ```
+3. Navigate to the project directory and start the server:
+   ```bash
+   live-server
+   ```
+4. Your browser will automatically open and reload on file changes
+
+---
+
 ## What You're Building Today
 
 - A web app you install on your phone (like a real app!)
