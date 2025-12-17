@@ -1,9 +1,14 @@
-const CACHE_NAME = 'charades-v1';
+const CACHE_NAME = 'charades-v2';
+// Cache version history:
+// v1: Initial release
+// v2: Switched to minified assets
+// Note: Increment version when assets change to invalidate client caches
+
 const urlsToCache = [
   '/',
   '/index.html',
-  '/style.css',
-  '/app.js',
+  '/style.min.css',
+  '/app.min.js',
   '/manifest.json'
 ];
 

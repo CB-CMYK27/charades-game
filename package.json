@@ -1,0 +1,19 @@
+{
+  "name": "holiday-charades",
+  "version": "1.0.0",
+  "description": "Holiday Charades PWA Game",
+  "scripts": {
+    "build": "npm run minify:js && npm run minify:css",
+    "minify:js": "terser app.js -o app.min.js -c -m --comments false",
+    "minify:css": "csso style.css --output style.min.css"
+  },
+  "devDependencies": {
+    "terser": "^5.36.0",
+    "csso-cli": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lpmi-13/charades-game.git"
+  },
+  "license": "MIT"
+}
