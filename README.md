@@ -43,6 +43,25 @@ A single-phone charades game you can play at the pub. Pass it around, act things
 
 **You now have a working charades app!**
 
+### Optional: Building Minified Assets (For Advanced Students)
+
+The production version uses minified JS and CSS for faster loading. If you modify `app.js` or `style.css`, you need to rebuild:
+
+1. Install Node.js if you haven't (https://nodejs.org)
+2. In your project folder, run:
+   ```bash
+   npm install        # First time only
+   npm run build      # After any JS/CSS changes
+   ```
+3. Commit the changes:
+   ```bash
+   git add app.min.js style.min.css
+   git commit -m "Rebuild minified assets"
+   git push
+   ```
+
+**Important**: Always edit `app.js` and `style.css` (the readable versions), then run `npm run build` to generate the `.min` files. The app uses the minified versions for better performance.
+
 ### Step 4: Connect to AI (taught together)
 
 We'll do this together in the workshop:
